@@ -1,0 +1,58 @@
+diff --color -urN --exclude=.git dbcop_old/src/main.rs dbcop/src/main.rs
+--- dbcop_old/src/main.rs	2024-07-04 02:03:15
++++ dbcop/src/main.rs	2024-07-04 01:43:11
+@@ -193,6 +193,8 @@
+             let mut verifier = Verifier::new(o_dir.to_path_buf());
+ 
+             match matches.value_of("consistency") {
++                Some("rc") => verifier.model("rc"),
++                Some("ra") => verifier.model("ra"),
+                 Some("cc") => verifier.model("cc"),
+                 Some("si") => verifier.model("si"),
+                 Some("ser") => verifier.model("ser"),
+diff --color -urN --exclude=.git dbcop_old/src/verifier/mod.rs dbcop/src/verifier/mod.rs
+--- dbcop_old/src/verifier/mod.rs	2024-07-04 02:03:15
++++ dbcop/src/verifier/mod.rs	2024-07-04 01:43:11
+@@ -27,6 +27,8 @@
+     dir: PathBuf,
+ }
+ 
++use std::time::{Duration, Instant};
++
+ impl Verifier {
+     pub fn new(dir: PathBuf) -> Self {
+         // fs::create_dir(&dir).unwrap();
+@@ -435,6 +437,9 @@
+             info!(self.log, "using our algorithms");
+ 
+             match self.consistency_model {
++                Consistency::ReadCommitted => {
++                    None
++                }
+                 Consistency::ReadAtomic => {
+                     let mut ra_hist = AtomicHistoryPO::new(transaction_infos.clone());
+ 
+@@ -454,6 +459,8 @@
+                     }
+                 }
+                 Consistency::Causal => {
++                    let construction_start = Instant::now();
++
+                     let mut causal_hist = AtomicHistoryPO::new(transaction_infos.clone());
+ 
+                     let wr = causal_hist.get_wr();
+@@ -465,9 +472,14 @@
+                     }
+                     causal_hist.vis_is_trans();
+ 
++                    println!("construction: {} ms", construction_start.elapsed().as_millis());
++
++                    let traversal_start = Instant::now();
+                     if causal_hist.vis.has_cycle() {
++                        println!("traversal: {} ms", traversal_start.elapsed().as_millis());
+                         Some(self.consistency_model)
+                     } else {
++                        println!("traversal: {} ms", traversal_start.elapsed().as_millis());
+                         None
+                     }
+                 }

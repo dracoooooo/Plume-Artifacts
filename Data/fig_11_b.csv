@@ -1,0 +1,3 @@
+client num,txn per client,rd rate,key num,distribution,op per txn,type,constructing,traversal,encoding,solving
+10,200,0.5,10000,uniform,20,plume,0.398,0.08,0.0,0.0
+10,200,0.5,10000,uniform,20,dbcop,23.861,23.985,0.0,0.0

@@ -1,0 +1,4 @@
+client num,txn per client,rd rate,key num,distribution,op per txn,plume,dbcop,datalog,monosat,polysi,viper
+25,200,0.5,10000,uniform,20,1.077,577.51,600.037,71.74,109.24,600.103
+25,200,0.5,10000,zipf,20,1.543,600.06,600.027,109.353,485.597,600.173
+25,200,0.5,10000,hotspot,20,1.277,600.06,600.033,123.593,585.06,600.23

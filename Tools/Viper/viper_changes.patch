@@ -1,0 +1,12 @@
+diff --color -urN --exclude=.git Viper_raw/src/utils/profiler.py Viper/src/utils/profiler.py
+--- Viper_raw/src/utils/profiler.py	2024-07-04 01:54:53
++++ Viper/src/utils/profiler.py	2024-07-03 17:37:15
+@@ -52,7 +52,7 @@
+         print("=========================")
+         for tag, duration in cls._total_time.items():
+             if tag != "sat":
+-                print("%s: %.2f s" % (tag, duration))
++                print("%s: %d ms" % (tag, int(duration*1000)))
+             else:
+                 print("%s: %r" % (tag, duration))
+         print("=========================")

@@ -1,0 +1,10 @@
+client num,txn per client,rd rate,key num,distribution,op per txn,plume
+2,200,0.5,10000,uniform,20,78.4
+5,200,0.5,10000,uniform,20,93.799
+10,200,0.5,10000,uniform,20,144.319
+15,200,0.5,10000,uniform,20,153.245
+20,200,0.5,10000,uniform,20,160.827
+25,200,0.5,10000,uniform,20,196.709
+30,200,0.5,10000,uniform,20,224.459
+40,200,0.5,10000,uniform,20,310.913
+50,200,0.5,10000,uniform,20,364.499

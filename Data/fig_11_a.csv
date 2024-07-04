@@ -1,0 +1,6 @@
+client num,txn per client,rd rate,key num,distribution,op per txn,type,constructing,traversal,encoding,solving
+10,200,0.5,10000,uniform,20,plume,0.398,0.08,0.0,0.0
+10,200,0.5,10000,uniform,20,monosat,1.55,0.0,3.841,0.033
+10,200,0.5,10000,uniform,20,polysi,3.712,0.0,1.496,0.795
+10,200,0.5,10000,uniform,20,viper,3.86,0.0,2.74,14.02
+10,200,0.5,10000,uniform,20,datalog,0,0.0,1199.271,22.062
