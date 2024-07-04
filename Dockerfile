@@ -17,7 +17,7 @@ RUN curl -L -o History.zip https://github.com/dracoooooo/Plume-Artifacts/release
 # build Cobra
 WORKDIR /plume/Tools/CobraVerifier
 RUN mvn install:install-file -Dfile=./monosat/monosat.jar -DgroupId=monosat -DartifactId=monosat -Dversion=1.4.0 -Dpackaging=jar -DgeneratePom=true
-RUN ./run.sh build
+RUN chmod +x ./run.sh && ./run.sh build
 
 # install lein
 WORKDIR /usr/local/bin
@@ -57,7 +57,7 @@ RUN pip install --no-cache-dir --upgrade -U -r ./requirements.txt
 
 # build PolySI
 WORKDIR /plume/Tools/PolySI
-RUN ./gradlew jar
+RUN chmod +x ./gradlew && ./gradlew jar
 
 # install dependencies for reproducing expriments
 WORKDIR /plume/Reproduce
