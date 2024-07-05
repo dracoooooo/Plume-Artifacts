@@ -37,7 +37,7 @@ fi
 if [ "$1" == "perf" ]; then
   PROF="-agentlib:hprof=file=hprof.txt,cpu=samples"
   time java $EA $PROF -Djava.library.path=$SCRIPT_DIR/include/ -jar \
-    target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar cobra audit || fail "FAIL: java benchmark"
+    $SCRIPT_DIR/target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar cobra audit || fail "FAIL: java benchmark"
 fi
 
 if [ "$1" != "mono" ]; then
@@ -58,22 +58,22 @@ fi
 
 if [ "$#"  == "2" ]; then
   time java $EA $MONO -Djava.library.path=$SCRIPT_DIR/include/ -jar \
-    target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" || fail "FAIL: java benchmark"
+    $SCRIPT_DIR/target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" || fail "FAIL: java benchmark"
 fi
 
 if [ "$#"  == "3" ]; then
   time java $EA $MONO -Djava.library.path=$SCRIPT_DIR/include/ -jar \
-    target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" "$CONFIG_PATH" || fail "FAIL: java benchmark"
+    $SCRIPT_DIR/target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" "$CONFIG_PATH" || fail "FAIL: java benchmark"
 fi
 
 if [ "$#"  == "4" ]; then
   time java $EA $MONO -Djava.library.path=$SCRIPT_DIR/include/ -jar \
-    target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" "$CONFIG_PATH" "$4"|| fail "FAIL: java benchmark"
+    $SCRIPT_DIR/target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" "$CONFIG_PATH" "$4"|| fail "FAIL: java benchmark"
 fi
 
 if [ "$#"  == "5" ]; then
   time java $EA $MONO -Djava.library.path=$SCRIPT_DIR/include/ -jar \
-    target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" "$CONFIG_PATH" "$4" "$5"|| fail "FAIL: java benchmark"
+    $SCRIPT_DIR/target/CobraVerifier-0.0.1-SNAPSHOT-jar-with-dependencies.jar "$1" "$2" "$CONFIG_PATH" "$4" "$5"|| fail "FAIL: java benchmark"
 fi
 
 #elif [ "$1" == "debug" ]; then

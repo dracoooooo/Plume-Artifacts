@@ -21,7 +21,7 @@ ALL_TOOLS = {
     },
     "Cobra": {
         "command": "/plume/Tools/CobraVerifier/run.sh mono audit /plume/Tools/CobraVerifier/cobra.conf.default {input_path}",
-        "input_folder": "viper",
+        "input_folder": "cobra",
     },
     "dbcop_TCC": {
         "command": "/plume/Tools/dbcop/target/release/dbcop verify -c cc --ver_dir {input_path} --out_dir /tmp",
