@@ -101,6 +101,13 @@ To evaluate the artifact, the following hardware is required:
     ```bash
     python3 reproduce_figs.py
     ```
+   
+   The following output is expected:
+
+    ```bash
+   usage: reproduce_figs.py [-h] [--timeout TIMEOUT] {fig8,fig9,fig10,fig11,fig12,fig13}
+   reproduce_figs.py: error: the following arguments are required: experiment_group
+    ```
 
 ## Step-by-Step Instructions
 
@@ -130,7 +137,8 @@ To evaluate the artifact, the following hardware is required:
 
     - Reproducing Fig 13 results requires at least 50GB memory.
     - The default timeout for each tool is 10 minutes. Modify the timeout by passing the `--timeout` parameter.
-    - Running a complete experiment may take several hours. You can modify the configuration in the `run_experiments` function of `reproduce_figs.py` to selectively run a few sets of experiments.
+    - Running a complete experiment may take several hours due to some comparison tools timing out at large test inputs. 
+You can use `vim` (already installed in this image) to modify the configuration in the `run_experiments` function of `reproduce_figs.py` to selectively run a few sets of experiments.
 
 ### Reproducing the Experiments of Tables
 

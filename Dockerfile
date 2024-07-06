@@ -6,7 +6,7 @@ SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update
-RUN apt install -y python3 python3-setuptools python3-pip curl openjdk-11-jdk build-essential cmake libgmp-dev zlib1g-dev git g++ libclang-dev unzip maven libgmpxx4ldbl wcstools wget
+RUN apt install -y python3 python3-setuptools python3-pip curl openjdk-11-jdk build-essential cmake libgmp-dev zlib1g-dev git g++ libclang-dev unzip maven libgmpxx4ldbl wcstools wget vim
 
 COPY . .
 
