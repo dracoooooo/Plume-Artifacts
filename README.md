@@ -133,14 +133,23 @@ To evaluate the artifact, the following hardware is required:
     python3 reproduce_figs.py fig8
     ```
 
+   When the execution is complete, the results (e.g. `fig8a_results.csv`) will be generated in the `Reproduce` folder.
+
     **Notes:**
 
-    - Reproducing Fig 13 results requires at least 50GB memory.
+    - Reproducing Figure 13 results requires at least 50GB memory.
+    - Reproducing the results for Figure 8, Figure 9, Figure 10, Figure 12, and Figure 13 with the default configuration takes several hours, and Figure 11 takes about 20 minutes. This is due to some comparison tools timing out at large test inputs.
     - The default timeout for each tool is 10 minutes. Modify the timeout by passing the `--timeout` parameter.
-    - Running a complete experiment may take several hours due to some comparison tools timing out at large test inputs. 
-You can use `vim` (already installed in this image) to modify the configuration in the `run_experiments` function of `reproduce_figs.py` to selectively run a few sets of experiments.
+    - You can use `vim` (already installed in this image) to modify the configuration in the `run_experiments` function of `reproduce_figs.py` to selectively run a few sets of experiments. 
+For example, to only use Plume to reproduce the experiments. If you only use Plume, the time to reproduce the results for each figure will be reduced to a few minutes.
 
 ### Reproducing the Experiments of Tables
+
+**Navigate to the reproduce directory:**
+
+```bash
+cd /plume/Reproduce
+```
 
 **Reproduce Table 3:**
 
@@ -150,7 +159,7 @@ Run the following command to reproduce the results of Table 3:
 ./reproduce_table3.sh
 ```
 
-The result (`table3.csv`) will be generated in the `Reproduce` folder.
+Running the script takes a few seconds. The result (`table3.csv`) will be generated in the `Reproduce` folder.
 
 **Reproduce Table 4:**
 
@@ -160,7 +169,7 @@ Run the following command to reproduce the results of Table 4:
 ./reproduce_table4.sh
 ```
 
-The result (`table4.csv`) will be generated in the `Reproduce` folder.
+Running the script takes about 30 seconds. The result (`table4.csv`) will be generated in the `Reproduce` folder.
 
 Note that as we continued to improve the quality of our codebase after the paper notification, we fixed a bug in counting the number of TAPs. As a result, the numbers of some TAPs shown in 
 Table 4 have been adjusted. The correct data is: 
@@ -178,12 +187,13 @@ Note also that this bug does not affect other experimental results.
 
 **Reproduce Table 5:**
 
-Run the following command to let the tools execute the test cases.
-The output of the tool will be recorded in `/Reproduce/table5.json`:
+Run the following command to let the tools execute the test cases:
 
 ```bash
 python3 reproduce_table5.py
 ```
+
+Running the script takes a few minutes. The outputs of the tools will be recorded in `/Reproduce/table5.json`.
 
 Manual analysis of the tool's output is required. The expected result for each test case is either false or reject. 
 If a tool returns true or accepts a test case, it indicates that the tool has failed that test case.
