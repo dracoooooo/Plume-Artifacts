@@ -28,6 +28,8 @@ The Docker image includes:
 |-- README.md
 |-- Reproduce
 |   |-- memusg
+|   |-- plot_all.sh         # use this script to plot all figs after reproducing all expirments
+|   |-- plot_figs.py        # use this script to plot figs
 |   |-- reproduce_figs.py   # use this script to reproduce expirments of figs
 |   |-- reproduce_table3.sh # use this script to reproduce expirments of table3
 |   |-- reproduce_table4.sh # use this script to reproduce expirments of table4
@@ -142,6 +144,24 @@ To evaluate the artifact, the following hardware is required:
     - The default timeout for each tool is 10 minutes. Modify the timeout by passing the `--timeout` parameter.
     - You can use `vim` (already installed in this image) to modify the configuration in the `run_experiments` function of `reproduce_figs.py` to selectively run a few sets of experiments. 
 For example, to only use Plume to reproduce the experiments. If you only use Plume, the time to reproduce the results for each figure will be reduced to a few minutes.
+
+
+3. **Plot the figures:**
+After reproducing all the experiments, run the following script to plot all the figures:
+```bash
+./plot_all.sh
+```
+This script takes all the `figX_results.csv` output from the previous step as input and produces `figX_result.png` as output.
+
+If you need to plot a single figure separately, you can directly use `plot_figs.py`:
+```bash
+python3 plot_figs.py <csv_filename> <chart_type>
+```
+Replace `<csv_filename>` with one of the CSV output files from the second step, and replace `<chart_type>` with either `line` or `bar` to indicate a line chart or a bar chart respectively. For example:
+```bash
+python3 plot_figs.py fig8a_results.csv line
+```
+The output should be "Chart saved as fig8a_results.png", and you can find `fig8a_results.png` in the `Reproduce` folder.
 
 ### Reproducing the Experiments of Tables
 

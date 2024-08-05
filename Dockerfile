@@ -62,7 +62,7 @@ RUN chmod +x ./gradlew && ./gradlew jar
 # install dependencies for reproducing expriments
 WORKDIR /plume/Reproduce
 RUN pip install --no-cache-dir --upgrade -U -r ./requirements.txt
-RUN chmod +x reproduce_table3.sh reproduce_table4.sh
+RUN chmod +x reproduce_table3.sh reproduce_table4.sh plot_all.sh
 
 # build Plume
 WORKDIR /plume/Plume
